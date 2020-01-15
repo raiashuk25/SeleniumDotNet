@@ -1,0 +1,17 @@
+<RunSettings>
+  <NUnit>
+    <NumberOfTestWorkers>2</NumberOfTestWorkers>
+  </NUnit>
+  <!-- Parameters used by tests at runtime -->
+  <TestRunParameters>
+    <Parameter name ="URL" value="http://automationpractice.com/index.php" />
+    <Parameter name ="ExecutionType" value="local" />
+    <Parameter name ="DriverWait" value="90" />
+    <Parameter name ="WaitFrequency" value="5" />
+    <Parameter name ="MaxWait" value="120" />
+    <Parameter name ="NumberOfRetrys" value="1" />
+    <Parameter name ="ReportType" value="HtmlReport" />
+    <!--<Parameter name ="huburl" value="http://localhost:4444/wd/hub/" /> -->
+    <Parameter name ="huburl" value="http://test1-selen-a6jfzf7fqh57-1287953932.us-east-1.elb.amazonaws.com:4444/wd/hub/" />
+  </TestRunParameters>
+</RunSettings>

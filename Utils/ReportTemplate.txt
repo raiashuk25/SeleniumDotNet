@@ -1,0 +1,41 @@
+﻿<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: center;
+        }
+    </style>
+</head>
+<h1 style="background-color:DodgerBlue;text-align: center"> Automation Test Execution Report</h1>
+<caption><b>Overall Summary :</b></caption>
+<table width="25%">
+    <tr style="background-color:Orange">
+        <th>Total</th>
+        <th>Pass</th>
+        <th>Fail</th>
+    </tr>
+    <tr>
+        <td><b>TotalCount</b></td>
+        <td bgcolor="green">
+            <b>PassCount</b>
+        </td>
+        <td bgcolor="red"><b>FailCount</b></td>
+    </tr>
+</table>
+
+<caption><b>Detailed Execution :</b></caption>
+<table width="100%">
+    <tr style="background-color:Orange">
+        <th>Test Name</th>
+        <th>Error Details</th>
+        <th>Test Status</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Duration</th>
+        <th>ScreenShot</th>
+    </tr>
+    <tr>
