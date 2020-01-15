@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace SeleniumDotNetCoreSample
 {
 
-    public class WebElementHelper
+    public class HtmlControl
     {
         IWebDriver Driver;
         public int WebDriverWait = Convert.ToInt32(TestContext.Parameters["DriverWait"]); //TestConfigurationBuilder.frameworkConfiguration.DriverWait;
@@ -22,7 +22,7 @@ namespace SeleniumDotNetCoreSample
         /// This is a parameterized constructor used to set the Driver
         /// </summary>
         /// <param name="Driver"></param>
-        public WebElementHelper(IWebDriver Driver)
+        public HtmlControl(IWebDriver Driver)
         {
             this.Driver = Driver;
             RestoreDefaultWait();

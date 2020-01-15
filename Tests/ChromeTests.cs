@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
+[assembly: Parallelizable(ParallelScope.Children)]
 
 namespace SeleniumDotNetCoreSample
 {
     [TestFixture]
-    class FirefoxTests// : BaseTest
+    class ChromeTests :BaseTest
     {
         public By searchField = By.Id("search_query_top");
         public By seachButton = By.XPath("//button[@name='submit_search']");
@@ -16,9 +17,27 @@ namespace SeleniumDotNetCoreSample
 
         [Test]
         [DynamicRetry]
-        public void FirefoxSearchTShirt1()
+        public void ChromeSearchTShirt1()
         {
-            TestControl tc = new TestControl().GetTestResources("Firefox");
+            DriverHelper tc = new DriverHelper().GetTestResources("Chrome");
+            try
+            {
+                tc.WebElementHelper.NavigateToURL(TestContext.Parameters["URL"]);
+                tc.WebElementHelper.SetText(searchField, Guid.NewGuid().ToString());
+                tc.WebElementHelper.Click(seachButton);
+                string messageAfterClickingSearch = tc.WebElementHelper.GetText(alertMessage);
+                Assert.That(messageAfterClickingSearch, Does.Contain("No results were found for your search"));
+            }
+            finally
+            {
+                tc.TearDown();
+            }          
+        }
+        [Test]
+        [DynamicRetry]
+        public void ChromeSearchTShirt2()
+        {
+            DriverHelper tc = new DriverHelper().GetTestResources("Chrome");
             try
             {
                 tc.WebElementHelper.NavigateToURL(TestContext.Parameters["URL"]);
@@ -34,9 +53,9 @@ namespace SeleniumDotNetCoreSample
         }
         [Test]
         [DynamicRetry]
-        public void FirefoxSearchTShirt2()
+        public void ChromeSearchTShirt3()
         {
-            TestControl tc = new TestControl().GetTestResources("Firefox");
+            DriverHelper tc = new DriverHelper().GetTestResources("Chrome");
             try
             {
                 tc.WebElementHelper.NavigateToURL(TestContext.Parameters["URL"]);
@@ -52,9 +71,9 @@ namespace SeleniumDotNetCoreSample
         }
         [Test]
         [DynamicRetry]
-        public void FirefoxSearchTShirt3()
+        public void ChromeSearchTShirt4()
         {
-            TestControl tc = new TestControl().GetTestResources("Firefox");
+            DriverHelper tc = new DriverHelper().GetTestResources("Chrome");
             try
             {
                 tc.WebElementHelper.NavigateToURL(TestContext.Parameters["URL"]);
@@ -70,27 +89,9 @@ namespace SeleniumDotNetCoreSample
         }
         [Test]
         [DynamicRetry]
-        public void FirefoxSearchTShirt4()
+        public void ChromeSearchTShirt5()
         {
-            TestControl tc = new TestControl().GetTestResources("Firefox");
-            try
-            {
-                tc.WebElementHelper.NavigateToURL(TestContext.Parameters["URL"]);
-                tc.WebElementHelper.SetText(searchField, Guid.NewGuid().ToString());
-                tc.WebElementHelper.Click(seachButton);
-                string messageAfterClickingSearch = tc.WebElementHelper.GetText(alertMessage);
-                Assert.That(messageAfterClickingSearch, Does.Contain("No results were found for your search"));
-            }
-            finally
-            {
-                tc.TearDown();
-            }
-        }
-        [Test]
-        [DynamicRetry]
-        public void FirefoxSearchTShirt5()
-        {
-            TestControl tc = new TestControl().GetTestResources("Firefox");
+            DriverHelper tc = new DriverHelper().GetTestResources("Chrome");
             try
             {
                 tc.WebElementHelper.NavigateToURL(TestContext.Parameters["URL"]);

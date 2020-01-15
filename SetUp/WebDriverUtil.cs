@@ -8,13 +8,18 @@ using System;
 
 namespace SeleniumDotNetCoreSample
 {
-   public  static class WebDriverUtil
+    public enum BrowserType
+    {
+        Chrome,
+        IE,
+        Firefox
+
+    }
+    public  static class WebDriverUtil
     {
        
         public static IWebDriver GetDriver(BrowserType browserType)
         {
-            //Based on the configuarion file values specified for the 
-            // Execution type as local or Remote corresoinding drivers get called.
             if (TestContext.Parameters["ExecutionType"].ToLower() == "local")
             {
                 return GetLocalDriver(browserType);
@@ -76,11 +81,7 @@ namespace SeleniumDotNetCoreSample
             return driver;
         }
 
-        /// <summary>
-        /// This method returns the browser type enum
-        /// </summary>
-        /// <param name="browser"></param>
-        /// <returns BrowserType></returns>
+
         public static BrowserType GetBrowserType(String browser)
         {
             BrowserType browserType;

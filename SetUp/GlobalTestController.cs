@@ -6,31 +6,15 @@ namespace SeleniumDotNetCoreSample
 {
   public  static class GlobalTestController
     {
-        static List<TestControl> GlobalControlList = new List<TestControl>();
+        static List<DriverHelper> GlobalControlList = new List<DriverHelper>();
         static List<String> ExecutionLog = new List<String>();
-        /// <summary>
-        /// This method is used to get the test control from the master list
-        /// </summary>
-        /// <param name="testName"></param>
-        /// <returns TestControl></returns>
-        public static TestControl GetTestControl(string testName)
-        {
-            TestControl tc = null;
-            foreach (var testControl in GlobalControlList)
-            {
-                if (testControl.TestName == testName)
-                {
-                    tc = testControl;
-                }
-            }
-            return tc;
-        }
+
 
         /// <summary>
         /// This Method adds a test control to the master list by verifying if the test name already exists
         /// </summary>
         /// <param name="tc"></param>
-        public static void AddTestControl(TestControl tc)
+        public static void AddTestControl(DriverHelper tc)
         {
             if (VerifyIfTestControlExistsWithTheTestName(tc, tc.TestName))
             {
@@ -43,7 +27,7 @@ namespace SeleniumDotNetCoreSample
         /// This method remove the test control from the master list
         /// </summary>
         /// <param name="tc"></param>
-        public static void RemoveTestControl(TestControl tc, String testName)
+        public static void RemoveTestControl(DriverHelper tc, String testName)
         {
             if(VerifyIfTestControlExistsWithTheTestName(tc,testName)) GlobalControlList.Remove(tc);
         }
@@ -53,7 +37,7 @@ namespace SeleniumDotNetCoreSample
         /// <param name="tc"></param>
         /// <param name="testName"></param>
         /// <returns></returns>
-        private static bool  VerifyIfTestControlExistsWithTheTestName(TestControl tc,String testName)
+        private static bool  VerifyIfTestControlExistsWithTheTestName(DriverHelper tc,String testName)
         {
             foreach (var testControl in GlobalControlList)
             {
@@ -64,22 +48,5 @@ namespace SeleniumDotNetCoreSample
             }
             return false;
         }
-        /// <summary>
-        /// This Method adds test log
-        /// </summary>
-        /// <param name="log"></param>
-        public static void AddLog(String log)
-        {
-            ExecutionLog.Add(log);
-        }
-        /// <summary>
-        /// This method returns the current execution log
-        /// </summary>
-        /// <returns></returns>
-        public static List<String> GetLog()
-        {
-            return ExecutionLog;
-        }
-
-    }
+  }
 }
